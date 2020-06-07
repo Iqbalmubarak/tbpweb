@@ -57,7 +57,10 @@ class InternshipAcceptanceController extends Controller
      */
     public function edit($id)
     {
-        //
+         // mengambil data mahasiswa dari tabel students berdasarkan nim yang dipilih
+            $students = DB::table('students')->where('id',$id)->get();
+        // passing data mahasiswa yang didapat ke view edit.blade.php
+            return view('edit',['students' => $students]);
     }
 
     /**
@@ -69,7 +72,12 @@ class InternshipAcceptanceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         // update data mahasiswa
+            //DB::table('students')->where('id',$request->id)->update([
+                    ]);
+        // alihkan halaman ke halaman students
+            return redirect('intern-proposals');
+
     }
 
     /**
