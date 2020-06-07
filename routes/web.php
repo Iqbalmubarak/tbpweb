@@ -35,14 +35,14 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Backend', 'prefix' => 'adm
     Route::group(['namespace' => 'Intern'], function () {
 
         /** K06 - ADM **/
-//        Route::post('intern-proposals/filter', 'InternshipProposalController@filter')->name('intern-proposals.filter');
-//        Route::get('intern-proposals/{id}/surattugas', 'InternshipProposalController@surattugas')->name('intern-proposals.surattugas');
-//        Route::get('intern-proposals/{id}/suratpermohonan', 'InternshipProposalController@surattugas')->name('intern-proposals.suratpermohonan');
-//        Route::resource('intern-proposals', 'InternshipProposalController')->only(['index', 'show']);
-//        Route::resource('intern-acceptance', 'InternshipAcceptanceController')->only(['edit', 'update']);
-//        Route::get('intern-supervisors/mass-edit', 'InternshipSupervisorController@mass_edit')->name('intern-supervisors.mass_edit');
-//        Route::put('intern-supervisors/mass_update', 'InternshipSupervisorController@mass_update')->name('intern-supervisors.mass_update');
-//        Route::resource('intern-supervisors', 'InternshipSupervisorController')->only(['index']);
+        Route::post('intern-proposals/filter', 'InternshipProposalController@filter')->name('intern-proposals.filter');
+        Route::get('intern-proposals/{id}/surattugas', 'InternshipProposalController@surattugas')->name('intern-proposals.surattugas');
+        Route::get('intern-proposals/{id}/suratpermohonan', 'InternshipProposalController@surattugas')->name('intern-proposals.suratpermohonan');
+        Route::resource('intern-proposals', 'InternshipProposalController')->only(['index', 'show']);
+        Route::resource('intern-acceptance', 'InternshipAcceptanceController')->only(['edit', 'update']);
+        Route::get('intern-supervisors/mass-edit', 'InternshipSupervisorController@mass_edit')->name('intern-supervisors.mass_edit');
+        Route::put('intern-supervisors/mass_update', 'InternshipSupervisorController@mass_update')->name('intern-supervisors.mass_update');
+        Route::resource('intern-supervisors', 'InternshipSupervisorController')->only(['index']);
 
         /** K07 - ADM */
 //        Route::post('interns/filter', 'InternshipController@filter')->name('interns.filter');

@@ -4,6 +4,11 @@ namespace App\Http\Controllers\Backend\Intern;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Internship;
+use App\Models\InternshipAgency;
+use App\Models\InternshipProposal;
+use App\Exceptions;
+use Illuminate\Support\Facades\Storage;
 
 class InternshipProposalController extends Controller
 {
@@ -14,7 +19,39 @@ class InternshipProposalController extends Controller
      */
     public function index()
     {
-        //
+        $user_id = auth()->user()->id;
+        $internships = Internship::where('student_id', $user_id)->get();
+
+        return view('backends.klp06.proposals.index', compact('internships'));
+    }
+
+    public function filter(Request $request)
+    {
+        try {
+        $filter = $request->filter;
+        $internship_agencies = InternshipAgency::where('name','LIKE','%'.$request->filter.'%')->first();
+        $id_ = $internship_agencies->id;
+        $internship_proposals = InternshipProposal::where('agency_id', $id_)->first();
+        $id = $internship_proposals->id;
+        $internships = Internship::where('internship_proposal_id', $id)->get();
+        }
+        
+        catch (\Throwable $th) {
+            $user_id = 0;
+        $internships = Internship::where('student_id', $user_id)->get();
+
+        return view('backends.klp06.proposals.index', compact('internships'));
+        }
+      
+        return view('backends.klp06.proposals.index', compact('internships'));
+        
+    }
+
+    public function show($id)
+    {
+        $internships = Internship::find($id);
+        return view('backends.klp06.proposals.show', compact('internships'));
+     
     }
 
     /**
@@ -44,10 +81,9 @@ class InternshipProposalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+    
+
+   
 
     /**
      * Show the form for editing the specified resource.
