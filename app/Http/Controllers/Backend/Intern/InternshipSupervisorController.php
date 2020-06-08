@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Backend\Intern;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\Internship;
 class InternshipSupervisorController extends Controller
 {
     /**
@@ -14,8 +14,27 @@ class InternshipSupervisorController extends Controller
      */
     public function index()
     {
-        //
+        $user_id = auth()->user()->id;
+        $internships = Internship::where('student_id', $user_id)->get();
+
+        return view('backends.supervisors.index', compact('internships'));
     }
+
+    public function mass_edit(Internship $internship)
+    {
+        return view('backends.supervisors.edit', compact('internship'));
+    }
+
+    public function mass_update(Request $request,Internship $internship)
+    {
+        $internship->update($request->all());
+
+        $user_id = auth()->user()->id;
+        $internships = Internship::where('student_id', $user_id)->get();
+
+        return view('backends.supervisors.index', compact('internships'));
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -49,17 +68,7 @@ class InternshipSupervisorController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
+   
     /**
      * Update the specified resource in storage.
      *
@@ -67,11 +76,7 @@ class InternshipSupervisorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
+  
     /**
      * Remove the specified resource from storage.
      *

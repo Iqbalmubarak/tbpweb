@@ -97,6 +97,12 @@
                 Daftar Proposal KP Mahasiswa
             </a>
         </li>
+        <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="{{ route('backend.intern-supervisors.index') }}">
+                <i class="cil-address-book c-sidebar-nav-icon"></i>
+                Daftar Supervisor KP
+            </a>
+        </li>
 
     </ul>
     <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent"
