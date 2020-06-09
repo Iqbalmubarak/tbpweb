@@ -3,12 +3,14 @@
 @section('breadcrumb')
     {!! cui()->breadcrumb([
         'Home' => route('home'),
-        'Proposal KP' => route('backend.intern-proposals.index'),
+        'Proposal KP' => route('frontend.myintern-proposals.index'),
         'Index' => '#'
     ]) !!}
 @endsection
 
-
+@section('toolbar')
+    {!! cui()->toolbar_btn(route('frontend.myintern-proposals.create'), 'cil-playlist-add', 'Tambah Proposal') !!}
+@endsection
 
 @section('content')
 
@@ -57,9 +59,7 @@
                             <h4>{!! $internship->proposal->status_text !!}</h4>
                         </td>
                         <td>
-                            {!! cui()->btn_view(route('backend.intern-proposals.show', [$internship->proposal->id])) !!}   
-                            {!! cui()->btn_edit(route('backend.intern-acceptance.edit', [$internship->proposal->id])) !!}   
-                             
+                            {!! cui()->btn_view(route('backend.intern-proposals.show', [$internship->proposal->id])) !!}    
                         </td>
                     </tr>
                 @empty

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class InternshipProposal extends Model
 {
+    protected $guarded = [];
     const STATUS_DRAFT = 0;
     const STATUS_SUBMITTED = 1;
     const STATUS_ACCEPTED = 2;

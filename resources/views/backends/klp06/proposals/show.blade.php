@@ -3,8 +3,8 @@
 @section('breadcrumb')
     {!! cui()->breadcrumb([
         'Home' => route('home'),
-        'Proposal KP' => route('frontend.myintern-proposals.index'),
-        'Index' => '#'
+        'Proposal KP' => route('backend.intern-proposals.index'),
+        'Show' => '#'
     ]) !!}
 @endsection
 

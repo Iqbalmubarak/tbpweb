@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Backend\Intern;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\InternshipProposal;
+use App\Models\Internship;
 class InternshipAcceptanceController extends Controller
 {
     /**
@@ -57,10 +58,8 @@ class InternshipAcceptanceController extends Controller
      */
     public function edit($id)
     {
-         // mengambil data mahasiswa dari tabel students berdasarkan nim yang dipilih
-            $students = DB::table('students')->where('id',$id)->get();
-        // passing data mahasiswa yang didapat ke view edit.blade.php
-            return view('edit',['students' => $students]);
+        $proposal = InternshipProposal::find($id);
+        return view('backends.klp06.verification.index', compact('proposal'));
     }
 
     /**
@@ -72,11 +71,18 @@ class InternshipAcceptanceController extends Controller
      */
     public function update(Request $request, $id)
     {
-         // update data mahasiswa
-            //DB::table('students')->where('id',$request->id)->update([
-                    ]);
-        // alihkan halaman ke halaman students
-            return redirect('intern-proposals');
+        // dd($request->all());
+        $proposal=InternshipProposal::find($id);
+        $proposal->update($request->all());
+        if($request->hasfile('file'))
+        {
+            $request->file('file')->move('surat_balasan/',$request->file('file')->getClientOriginalName());
+            $proposal->file = $request->file('file')->getClientOriginalName();
+            $proposal->save();
+        }
+        $user_id = auth()->user()->id;
+        $internships = Internship::where('student_id', $user_id)->get();
+        return view('backends.klp06.proposals.index', compact('internships'));
 
     }
 
