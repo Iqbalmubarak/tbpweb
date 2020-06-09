@@ -72,12 +72,7 @@ class InternshipAcceptanceController extends Controller
      */
     public function update(Request $request, $id)
     {
-         // update data mahasiswa
-            //DB::table('students')->where('id',$request->id)->update([
-                    ]);
-        // alihkan halaman ke halaman students
-            return redirect('intern-proposals');
-
+         
     }
 
     /**

@@ -10,8 +10,8 @@
     <div class="col-md-6">
     <div class="form-group">
     <div class="col-sm" style="align:right">
-        <a href="" class="btn btn-primary">Surat Tugas KP</a>
-        <a href="" class="btn btn-info">Surat Permohonan KP</a>
+        <a href="printstugas.blade.php" class="btn btn-primary">Surat Tugas KP</a>
+        <a href="printspermohonan.blade.php" class="btn btn-info">Surat Permohonan KP</a>
 </div>
         </div>
     </div>

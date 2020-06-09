@@ -9,6 +9,7 @@ use App\Models\InternshipAgency;
 use App\Models\InternshipProposal;
 use App\Exceptions;
 use Illuminate\Support\Facades\Storage;
+use PDF;
 
 class InternshipProposalController extends Controller
 {
@@ -118,4 +119,13 @@ class InternshipProposalController extends Controller
     {
         //
     }
+
+    public function print($id)
+    {
+        $internships = Internship::find($id);
+        
+        $pdf = PDF::loadview('backends.klp6.proposal.print', ['intership'=>$internships]);
+        return $pdf->stream();
+    }
+    
 }
