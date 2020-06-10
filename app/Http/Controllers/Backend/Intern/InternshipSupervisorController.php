@@ -17,12 +17,12 @@ class InternshipSupervisorController extends Controller
         $user_id = auth()->user()->id;
         $internships = Internship::where('student_id', $user_id)->get();
 
-        return view('backends.supervisors.index', compact('internships'));
+        return view('backends.klp06.supervisors.index', compact('internships'));
     }
 
     public function mass_edit(Internship $internship)
     {
-        return view('backends.supervisors.edit', compact('internship'));
+        return view('backends.klp06.supervisors.edit', compact('internship'));
     }
 
     public function mass_update(Request $request,Internship $internship)
@@ -32,7 +32,7 @@ class InternshipSupervisorController extends Controller
         $user_id = auth()->user()->id;
         $internships = Internship::where('student_id', $user_id)->get();
 
-        return view('backends.supervisors.index', compact('internships'));
+        return view('backends.klp06.supervisors.index', compact('internships'));
     }
 
 

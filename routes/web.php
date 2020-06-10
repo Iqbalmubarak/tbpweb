@@ -37,9 +37,9 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Backend', 'prefix' => 'adm
         /** K06 - ADM **/
         Route::post('intern-proposals/filter', 'InternshipProposalController@filter')->name('intern-proposals.filter');
         Route::get('intern-proposals/{id}/surattugas', 'InternshipProposalController@surattugas')->name('intern-proposals.surattugas');
-//        Route::get('intern-proposals/{id}/suratpermohonan', 'InternshipProposalController@surattugas')->name('intern-proposals.suratpermohonan');
+        Route::get('intern-proposals/{id}/suratpermohonan', 'InternshipProposalController@suratpermohonan')->name('intern-proposals.suratpermohonan');
         Route::resource('intern-proposals', 'InternshipProposalController')->only(['index', 'show']);
-//        Route::resource('intern-acceptance', 'InternshipAcceptanceController')->only(['edit', 'update']);
+        Route::resource('intern-acceptance', 'InternshipAcceptanceController')->only(['edit', 'update']);
         Route::get('intern-supervisors/{internship}/mass-edit', 'InternshipSupervisorController@mass_edit')->name('intern-supervisors.mass_edit');
         Route::put('intern-supervisors/{internship}/mass_update', 'InternshipSupervisorController@mass_update')->name('intern-supervisors.mass_update');
         Route::resource('intern-supervisors', 'InternshipSupervisorController')->only(['index']);

@@ -10,8 +10,9 @@
     <div class="col-md-6">
     <div class="form-group">
     <div class="col-sm" style="align:right">
-        <a href="" class="btn btn-primary">Surat Tugas KP</a>
-        <a href="" class="btn btn-info">Surat Permohonan KP</a>
+        <a href="{{route('backend.intern-proposals.surattugas', [$internships->proposal->id])}}" class="btn btn-primary">Surat Tugas KP</a>
+        <a href="{{route('backend.intern-proposals.suratpermohonan', [$internships->proposal->id])}}" class="btn btn-info">Surat Permohonan KP</a> <br>
+        <a href="{{route('backend.intern-acceptance.edit', [$internships->proposal->id])}}" class="btn btn-danger" style="margin:5px">Verifikasi Surat Balasan</a>
 </div>
         </div>
     </div>

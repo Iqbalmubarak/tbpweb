@@ -27,7 +27,7 @@
 
                         {{-- CARD BODY--}}
                         <div class="card-body">
-                        @include('backends.supervisors._form')
+                        @include('backends.klp06.supervisors._form')
                         </div>
 
                         {{--CARD FOOTER--}}
