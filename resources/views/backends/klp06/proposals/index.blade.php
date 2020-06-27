@@ -15,13 +15,20 @@
     <div class="card">
 
         <div class="card-header">
+        <div class="row">
+        <div class="col-md-6">
             <strong>List Proposal KP</strong>
         </div>
+        <div class="col-md-6">
         <form action="{{ route('backend.intern-proposals.filter') }}" method="post">
         {{csrf_field()}}
-		    <input type="text" name="filter" style="margin:10px 10px 10px 25px; height:35px" placeholder="Cari Instansi" value="{{ old('filter') }}">
-		    <input type="submit" value="Filter" class="btn btn-primary">
+		    <input type="text" name="filter" style="margin:10px 10px 10px 25px; height:25px" placeholder="Cari Instansi" value="{{ old('filter') }}">
+		    <input type="submit" value="Filter" class="btn btn-primary btn-sm">
 	    </form>
+        </div>
+        </div>
+        </div>
+     
 
         <div class="card-body">
             <table class="table table-outline table-hover">

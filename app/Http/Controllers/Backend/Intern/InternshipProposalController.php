@@ -20,15 +20,14 @@ class InternshipProposalController extends Controller
      */
     public function index()
     {
-        $user_id = auth()->user()->id;
-        $internships = Internship::where('student_id', $user_id)->get();
-
+        $internships = Internship::all();
         return view('backends.klp06.proposals.index', compact('internships'));
     }
 
     public function filter(Request $request)
     {
         try {
+            dd($request);
         $filter = $request->filter;
         $internship_agencies = InternshipAgency::where('name','LIKE','%'.$request->filter.'%')->first();
         $id_ = $internship_agencies->id;

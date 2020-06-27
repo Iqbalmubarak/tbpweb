@@ -14,8 +14,7 @@ class InternshipSupervisorController extends Controller
      */
     public function index()
     {
-        $user_id = auth()->user()->id;
-        $internships = Internship::where('student_id', $user_id)->get();
+        $internships = Internship::all();
 
         return view('backends.klp06.supervisors.index', compact('internships'));
     }
