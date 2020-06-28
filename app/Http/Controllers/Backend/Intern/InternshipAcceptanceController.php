@@ -60,10 +60,8 @@ class InternshipAcceptanceController extends Controller
     public function edit($id)
     {
         $proposal = InternshipProposal::find($id);
-        $internships = DB::table('internships')
-                    ->where('internship_proposal_id',$id)->get();
         $statuses = InternshipProposal::STATUSES;
-        return view('backends.klp06.verification.index', compact('proposal','statuses','internships'));
+        return view('backends.klp06.verification.edit', compact('proposal','statuses',));
     }
 
     /**

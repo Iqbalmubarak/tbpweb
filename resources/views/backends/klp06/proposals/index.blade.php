@@ -15,10 +15,10 @@
     <div class="card">
 
         <div class="card-header">
+        <strong>List Proposal KP</strong>
         <div class="row">
-        <div class="col-md-6">
-            <strong>List Proposal KP</strong>
-            
+        <div class="col-md-6"style="text-align:right">
+            <input type="submit" value="Filter" class="btn btn-primary">
         </div>
         <div class="col-md-6" style="text-align:right">
         {{ html()->Form('POST', route('backend.intern-proposals.filter'))->acceptsFiles()->open() }}
@@ -26,7 +26,7 @@
             @error('filter')
             <div class="invalid-feedback">{{ $errors->first('filter') }}</div>
             @enderror
-        <input type="submit" value="Filter" class="btn btn-primary">
+      
         </div>
         {{ html()->closeModelForm() }}
         </div>
