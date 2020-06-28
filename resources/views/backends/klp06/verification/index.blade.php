@@ -12,14 +12,10 @@
 @section('content')
 
     <div class="card">
-
+        
         <div class="card-header">
             <strong>Form Verifikasi Surat Balasan</strong>
         </div>
-
-      
-       
-
         <div class="card-body">
         <div class="form-group">
         <div class="form-group">

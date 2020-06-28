@@ -37,8 +37,15 @@
                             <br>
                             {{ $internship->proposal->end_at }}
                         </td>
-                        <td>
-                        {{ $internship->field_advisor_name }}
+                        <td>           
+                        <?php
+                            $id = $internship->advisor_id;
+                            $datas = DB::table('lecturers')
+                            ->where('id',$id)->get();
+                        ?>
+                        @foreach($datas as $data)
+                        {{$data->name}}
+                        @endforeach
                         </td>
                         <td>
                              {!! cui()->btn_edit(route('backend.intern-supervisors.mass_edit', [$internship->id])) !!}

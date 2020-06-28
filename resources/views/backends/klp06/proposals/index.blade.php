@@ -18,14 +18,17 @@
         <div class="row">
         <div class="col-md-6">
             <strong>List Proposal KP</strong>
+            
         </div>
-        <div class="col-md-6">
-        <form action="{{ route('backend.intern-proposals.filter') }}" method="post">
-        {{csrf_field()}}
-		    <input type="text" name="filter" style="margin:10px 10px 10px 25px; height:25px" placeholder="Cari Instansi" value="{{ old('filter') }}">
-		    <input type="submit" value="Filter" class="btn btn-primary btn-sm">
-	    </form>
+        <div class="col-md-6" style="text-align:right">
+        {{ html()->Form('POST', route('backend.intern-proposals.filter'))->acceptsFiles()->open() }}
+            {{ html()->text('filter')->class(["form-control", "is-invalid" => $errors->has('filter')])->id('filter')->placeholder('Nama Instansi') }}
+            @error('filter')
+            <div class="invalid-feedback">{{ $errors->first('filter') }}</div>
+            @enderror
+        <input type="submit" value="Filter" class="btn btn-primary">
         </div>
+        {{ html()->closeModelForm() }}
         </div>
         </div>
      

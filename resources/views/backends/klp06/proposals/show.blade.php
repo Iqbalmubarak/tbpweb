@@ -20,11 +20,17 @@
                         {{-- CARD HEADER--}}
                         <div class="card-header">
                             <strong><i class="cil-zoom"></i> Detail Proposal KP</strong>
+                            <div class="col-sm" style="text-align:right">
+                                <a href="{{route('backend.intern-acceptance.edit', [$internships->proposal->id])}}" class="btn btn-danger" style="margin:5px">Verifikasi Surat Balasan</a>
+                                <a href="{{route('backend.intern-proposals.surattugas', [$internships->proposal->id])}}" class="btn btn-primary">Surat Tugas KP</a>
+                                <a href="{{route('backend.intern-proposals.suratpermohonan', [$internships->proposal->id])}}" class="btn btn-info " style="margin:5px">Surat Permohonan KP</a>
+                            </div>
                         </div>
 
                         {{-- CARD BODY--}}
                         <div class="card-body">
                             @include('backends.klp06.proposals._detail')
+                            @include('backends.klp06.proposals._list')
                         </div>
 
                         {{--CARD FOOTER--}}
@@ -38,5 +44,4 @@
 
         </div>
     </div>
-
 @endsection

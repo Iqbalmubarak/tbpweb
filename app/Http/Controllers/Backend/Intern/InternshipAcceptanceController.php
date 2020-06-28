@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\InternshipProposal;
 use App\Models\Internship;
+use Illuminate\Support\Facades\DB;  
 class InternshipAcceptanceController extends Controller
 {
     /**
@@ -59,7 +60,10 @@ class InternshipAcceptanceController extends Controller
     public function edit($id)
     {
         $proposal = InternshipProposal::find($id);
-        return view('backends.klp06.verification.index', compact('proposal'));
+        $internships = DB::table('internships')
+                    ->where('internship_proposal_id',$id)->get();
+        $statuses = InternshipProposal::STATUSES;
+        return view('backends.klp06.verification.index', compact('proposal','statuses','internships'));
     }
 
     /**
@@ -80,8 +84,7 @@ class InternshipAcceptanceController extends Controller
             $proposal->file = $request->file('file')->getClientOriginalName();
             $proposal->save();
         }
-        $user_id = auth()->user()->id;
-        $internships = Internship::where('student_id', $user_id)->get();
+        $internships = Internship::all();
         return view('backends.klp06.proposals.index', compact('internships'));
 
     }

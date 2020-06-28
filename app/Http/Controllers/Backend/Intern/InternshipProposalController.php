@@ -27,7 +27,6 @@ class InternshipProposalController extends Controller
     public function filter(Request $request)
     {
         try {
-            dd($request);
         $filter = $request->filter;
         $internship_agencies = InternshipAgency::where('name','LIKE','%'.$request->filter.'%')->first();
         $id_ = $internship_agencies->id;

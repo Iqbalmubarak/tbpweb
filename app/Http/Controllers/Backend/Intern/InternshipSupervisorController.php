@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend\Intern;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Internship;
+use App\Models\Lecturer;
+use Illuminate\Support\Facades\DB;
 class InternshipSupervisorController extends Controller
 {
     /**
@@ -19,17 +21,26 @@ class InternshipSupervisorController extends Controller
         return view('backends.klp06.supervisors.index', compact('internships'));
     }
 
-    public function mass_edit(Internship $internship)
+    public function mass_edit($id)
     {
-        return view('backends.klp06.supervisors.edit', compact('internship'));
+        $internship=Internship::find($id);
+        $i = DB::table('internships')->where('id',$id)->get();
+
+        foreach($i as $data)
+        {
+            $id_lecturers = $data->advisor_id;
+        }
+
+        $lecturers = Lecturer::all()->pluck('name','id');
+  
+        return view('backends.klp06.supervisors.edit', compact('internship','lecturers'));
     }
 
     public function mass_update(Request $request,Internship $internship)
     {
-        $internship->update($request->all());
+        $internship->update(['advisor_id' => $request->id]);
 
-        $user_id = auth()->user()->id;
-        $internships = Internship::where('student_id', $user_id)->get();
+        $internships = Internship::all();
 
         return view('backends.klp06.supervisors.index', compact('internships'));
     }
